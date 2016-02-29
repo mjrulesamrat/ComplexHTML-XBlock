@@ -492,6 +492,9 @@ class ComplexHTMLXBlock(XBlock):
         if self.tick_interval < 1000:
             self.tick_interval = 86400000  # 24 hrs
 
+        #Load CkEditor js
+        fragment.add_javascript(load_resource('static/js/ckeditor/ckeditor.js'))
+        
         # Load CodeMirror
         fragment.add_javascript(load_resource('static/js/codemirror/lib/codemirror.js'))
         fragment.add_javascript(load_resource('static/js/codemirror/mode/xml/xml.js'))
