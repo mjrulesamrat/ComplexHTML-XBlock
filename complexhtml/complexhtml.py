@@ -280,7 +280,7 @@ class ComplexHTMLXBlock(XBlock):
     def generate_html(html):
 
         result = "<div class=\"complexhtml_xblock\">"
-        result += "<div class='complexhtml_left'>"
+        result += "<div class='complexhtml_left'><i class='fa fa-lightbulb-o'></i>"
         result += "</div>"
         result += "<div class='complexhtml_right'>"
         # Assume valid HTML code
