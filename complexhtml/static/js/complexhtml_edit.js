@@ -38,6 +38,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
 
     var ckeditor_html = "";
     var editor_html = "";
+    var ckeditor_html_flag = true
 
     // Attach CKEditor to HTML input textarea
     if (CKEditor_URL.endsWith("ckeditor.js")) {
@@ -47,10 +48,13 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
             ckeditor_html.config.width = "auto";
         });
     }
+    else{
+        ckeditor_html_flag = false;
+    }
 
     console.log(ckeditor_html);
     // Use CodeMirror as a fallback
-    if (ckeditor_html === "") {
+    if (!ckeditor_html_flag) {
         console.log("Code mirror loaded");
         editor_html = CodeMirror.fromTextArea($('.chx_body_html')[0],
             jQuery.extend({mode: {name: "htmlmixed", globalVars: true}}, codemirror_settings)
@@ -90,7 +94,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
         $('.modal-window').css({"top": "0px", "left": "0px", "width": "100%"});
         $('.modal-content').css({"height": 0.865 * $(window).height()});
         editor_dependencies.setSize("100%", h);
-        if (ckeditor_html != "") ckeditor_html.resize("100%", h);
+        if (ckeditor_html_flag) ckeditor_html.resize("100%", h);
         if (editor_html != "") editor_html.setSize("100%", h);
         editor_tracked.setSize("100%", h);
         editor_js_chunk_1.setSize("100%", h);
@@ -110,7 +114,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
         $('.modal-window').css({"top": sTop, "left": sLeft, "width": sWidth});
         $('.modal-content').css({"height": 0.6 * $(window).height()});
         editor_dependencies.setSize("100%", h);
-        if (ckeditor_html != "") ckeditor_html.resize("100%", h);
+        if (ckeditor_html_flag) ckeditor_html.resize("100%", h);
         if (editor_html != "") editor_html.setSize("100%", h);
         editor_tracked.setSize("100%", h);
         editor_js_chunk_1.setSize("100%", h);
@@ -161,7 +165,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
                 "dev_stuff": $('.chx_dev_stuff_studio').prop('checked') ? 1 : 0,
                 "dependencies": editor_dependencies.getDoc().getValue(),
                 "body_html":
-                    (ckeditor_html != "") ?
+                    (ckeditor_html_flag) ?
                         ckeditor_html.getData() :
                         editor_html.getDoc().getValue(),
                 "body_tracked": editor_tracked.getDoc().getValue(),
