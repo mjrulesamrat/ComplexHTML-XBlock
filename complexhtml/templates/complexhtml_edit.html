@@ -7,29 +7,35 @@
         <input type="text" class="chx_display_name" value="{{ self.display_name }}">
         <br/>
 
-        <p class="chx_desc">Record Mouse Click?</p>
-        <input type="checkbox" class="chx_record_click" {% if self.record_click %} checked {% endif %}>
-        <br/>
+        {% comment %}
 
-        <p class="chx_desc">Record Mouse Hovering?</p>
-        <input type="checkbox" class="chx_record_hover" {% if self.record_hover %} checked {% endif %}>
-        <br/>
+            <p class="chx_desc">Record Mouse Click?</p>
+            <input type="checkbox" class="chx_record_click" {% if self.record_click %} checked {% endif %}>
+            <br/>
 
-        <p class="chx_desc">Student Ping Interval (ms)</p>
-        <input type="text" class="chx_tick_interval" value="{{ self.tick_interval }}">
-        <br/>
+            <p class="chx_desc">Record Mouse Hovering?</p>
+            <input type="checkbox" class="chx_record_hover" {% if self.record_hover %} checked {% endif %}>
+            <br/>
 
-        <hr/>
-        <p class="chx_desc">Show Development Info in LMS?</p>
-        <input type="checkbox" class="chx_dev_stuff_studio" {% if self.dev_stuff %} checked {% endif %}>
+            <p class="chx_desc">Student Ping Interval (ms)</p>
+            <input type="text" class="chx_tick_interval" value="{{ self.tick_interval }}">
+            <br/>
+
+            <hr/>
+            <p class="chx_desc">Show Development Info in LMS?</p>
+            <input type="checkbox" class="chx_dev_stuff_studio" {% if self.dev_stuff %} checked {% endif %}>
+
+        {% endcomment %}
 
     </div>
 
     <!-- Dependencies tab -->
+    {% comment %}
     <div class="chx_tab_dependencies">
         <p class="chx_desc">Dependencies</p>
         <textarea wrap="off" class="chx_dependencies" cols="80" rows="20">{{ self.dependencies }}</textarea>
     </div>
+    {% endcomment %}
 
     <!-- HTML editor tab -->
     <div class="chx_tab_html">
@@ -38,6 +44,7 @@
     </div>
 
     <!-- Tracked elements tab -->
+    {% comment %}
     <div class="chx_tab_tracked">
         <p class="chx_desc">Tracked Elements</p>
         <textarea wrap="off" class="chx_body_tracked" cols="80" rows="20">{{ self.body_tracked }}</textarea>
@@ -60,6 +67,7 @@
         <p class="chx_desc">JSON Settings</p>
         <textarea wrap="off" class="chx_body_json" cols="80" rows="20">{{ self.body_json }}</textarea>
     </div>
+    {% endcomment %}
 
     <!-- CSS editor -->
     <div class="chx_tab_css">
