@@ -282,10 +282,10 @@ class ComplexHTMLXBlock(XBlock):
         result = "<div class=\"complexhtml_xblock\">"
         result += "<div class='complexhtml_left'><i class='fa fa-lightbulb-o'></i>"
         result += "</div>"
-        result += "<div class='complexhtml_right'>"
+        result += "<div class='complexhtml_right'><div>"
         # Assume valid HTML code
         result += html
-        result += "</div>"
+        result += "</div></div>"
         result += "</div>"
 
 
