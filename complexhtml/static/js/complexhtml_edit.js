@@ -94,7 +94,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
         $('.modal-window').css({"top": "0px", "left": "0px", "width": "100%"});
         $('.modal-content').css({"height": 0.865 * $(window).height()});
         editor_dependencies.setSize("100%", h);
-        if (ckeditor_html_flag) ckeditor_html.resize("100%", h);
+        if (ckeditor_html != "") ckeditor_html.resize("100%", h);
         if (editor_html != "") editor_html.setSize("100%", h);
         editor_tracked.setSize("100%", h);
         editor_js_chunk_1.setSize("100%", h);
@@ -114,7 +114,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
         $('.modal-window').css({"top": sTop, "left": sLeft, "width": sWidth});
         $('.modal-content').css({"height": 0.6 * $(window).height()});
         editor_dependencies.setSize("100%", h);
-        if (ckeditor_html_flag) ckeditor_html.resize("100%", h);
+        if (ckeditor_html != "") ckeditor_html.resize("100%", h);
         if (editor_html != "") editor_html.setSize("100%", h);
         editor_tracked.setSize("100%", h);
         editor_js_chunk_1.setSize("100%", h);
@@ -165,7 +165,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
                 "dev_stuff": $('.chx_dev_stuff_studio').prop('checked') ? 1 : 0,
                 "dependencies": editor_dependencies.getDoc().getValue(),
                 "body_html":
-                    (ckeditor_html_flag) ?
+                    (ckeditor_html != "") ?
                         ckeditor_html.getData() :
                         editor_html.getDoc().getValue(),
                 "body_tracked": editor_tracked.getDoc().getValue(),
