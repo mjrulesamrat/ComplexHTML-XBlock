@@ -48,7 +48,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
         });
     }
 
-//    console.log(ckeditor_html);
+    console.log(ckeditor_html);
     // Use CodeMirror as a fallback
     if (ckeditor_html === "") {
         console.log("Code mirror loaded");
