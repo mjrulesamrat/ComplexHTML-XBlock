@@ -54,7 +54,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
 
     console.log(ckeditor_html);
     // Use CodeMirror as a fallback
-    if (!ckeditor_html_flag) {
+    if (ckeditor_html_flag) {
         console.log("Code mirror loaded");
         editor_html = CodeMirror.fromTextArea($('.chx_body_html')[0],
             jQuery.extend({mode: {name: "htmlmixed", globalVars: true}}, codemirror_settings)
