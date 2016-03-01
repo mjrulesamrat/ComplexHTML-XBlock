@@ -11,6 +11,10 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
     // Manually set this to where you store CKEditor
     var CKEditor_URL = "{{ CKEDITOR_URL }}";
 
+    console.log("ckeditor is enabled");
+    console.log(CKEditor_URL);
+
+
     var codemirror_settings = {
         lineNumbers: true,
         matchBrackets: true,
@@ -44,8 +48,10 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
         });
     }
 
+//    console.log(ckeditor_html);
     // Use CodeMirror as a fallback
     if (ckeditor_html === "") {
+        console.log("Code mirror loaded");
         editor_html = CodeMirror.fromTextArea($('.chx_body_html')[0],
             jQuery.extend({mode: {name: "htmlmixed", globalVars: true}}, codemirror_settings)
         );
