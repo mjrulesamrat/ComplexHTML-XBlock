@@ -1,12 +1,26 @@
+.complexhtml_xblock{
+    background-color: #f2f2f2;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+    border-width: 1px;
+    border-color: #19b872;
+}
+
 .complexhtml_left{
     float : left;
-    width : 20%;
+    width : 10%;
 }
 
 .complexhtml_right{
     float : right;
-    width : 80%;
+    width : 90%;
 }
+
+.complexhtml_left i{
+    font-size: 75px;
+}
+
 .complexhtml_xblock:after{
     content:"";
     display: table;
