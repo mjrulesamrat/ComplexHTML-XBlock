@@ -25,6 +25,19 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
 
     var studio_buttons = {
         "chx_tab_options": "Options",
+        //"chx_tab_dependencies": "Dependencies",
+        "chx_tab_html": "HTML",
+        //"chx_tab_tracked": "Track",
+        //"chx_tab_js_chunk_1": "JS (Global)",
+        //"chx_tab_js_chunk_2": "JS (Load)",
+        //"chx_tab_json": "JSON",
+        //"chx_tab_css": "CSS",
+        //"chx_preview": "Preview",
+        "chx_fullscreen": "Max"
+    };
+
+    var studio_buttons_1 = {
+        "chx_tab_options": "Options",
         "chx_tab_dependencies": "Dependencies",
         "chx_tab_html": "HTML",
         "chx_tab_tracked": "Track",
@@ -38,7 +51,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
 
     var ckeditor_html = "";
     var editor_html = "";
-    var ckeditor_html_flag = true
+    var ckeditor_html_flag = true;
 
     // Attach CKEditor to HTML input textarea
     if (CKEditor_URL.endsWith("ckeditor.js")) {
@@ -62,29 +75,30 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
     }
 
     // Attach CodeMirror where required
-    var editor_dependencies = CodeMirror.fromTextArea($('.chx_dependencies')[0],
-        codemirror_settings
-    );
+    // Commented by Jay Modi
+    //var editor_dependencies = CodeMirror.fromTextArea($('.chx_dependencies')[0],
+    //    codemirror_settings
+    //);
 
-    var editor_tracked = CodeMirror.fromTextArea($('.chx_body_tracked')[0],
-        codemirror_settings
-    );
+    //var editor_tracked = CodeMirror.fromTextArea($('.chx_body_tracked')[0],
+    //    codemirror_settings
+    //);
 
-    var editor_js_chunk_1 = CodeMirror.fromTextArea($('.chx_body_js_chunk_1')[0],
-        jQuery.extend({mode: {name: "javascript", globalVars: true}}, codemirror_settings)
-    );
+    //var editor_js_chunk_1 = CodeMirror.fromTextArea($('.chx_body_js_chunk_1')[0],
+    //    jQuery.extend({mode: {name: "javascript", globalVars: true}}, codemirror_settings)
+    //);
 
-    var editor_js_chunk_2 = CodeMirror.fromTextArea($('.chx_body_js_chunk_2')[0],
-        jQuery.extend({mode: {name: "javascript", globalVars: true}}, codemirror_settings)
-    );
+    //var editor_js_chunk_2 = CodeMirror.fromTextArea($('.chx_body_js_chunk_2')[0],
+    //    jQuery.extend({mode: {name: "javascript", globalVars: true}}, codemirror_settings)
+    //);
 
-    var editor_json = CodeMirror.fromTextArea($('.chx_body_json')[0],
-        jQuery.extend({mode: {name: "javascript", globalVars: true, json: true}}, codemirror_settings)
-    );
+    //var editor_json = CodeMirror.fromTextArea($('.chx_body_json')[0],
+    //    jQuery.extend({mode: {name: "javascript", globalVars: true, json: true}}, codemirror_settings)
+    //);
 
-    var editor_css = CodeMirror.fromTextArea($('.chx_body_css')[0],
-        jQuery.extend({mode: {name: "css", globalVars: true}}, codemirror_settings)
-    );
+    ///var editor_css = CodeMirror.fromTextArea($('.chx_body_css')[0],
+    //    jQuery.extend({mode: {name: "css", globalVars: true}}, codemirror_settings)
+    //);
 
     // Adjust Editor dialog to fit the entire window
     function xblock_maximize() {
@@ -93,14 +107,14 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
 
         $('.modal-window').css({"top": "0px", "left": "0px", "width": "100%"});
         $('.modal-content').css({"height": 0.865 * $(window).height()});
-        editor_dependencies.setSize("100%", h);
+        //editor_dependencies.setSize("100%", h);
         if (ckeditor_html != "") ckeditor_html.resize("100%", h);
         if (editor_html != "") editor_html.setSize("100%", h);
-        editor_tracked.setSize("100%", h);
-        editor_js_chunk_1.setSize("100%", h);
-        editor_js_chunk_2.setSize("100%", h);
-        editor_json.setSize("100%", h);
-        editor_css.setSize("100%", h);
+        //editor_tracked.setSize("100%", h);
+        ///editor_js_chunk_1.setSize("100%", h);
+        //editor_js_chunk_2.setSize("100%", h);
+        //editor_json.setSize("100%", h);
+        //editor_css.setSize("100%", h);
         $('#chx_fullscreen').css({"color": csxColor[1]});
 
         isFullscreen = true;
@@ -113,14 +127,14 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
 
         $('.modal-window').css({"top": sTop, "left": sLeft, "width": sWidth});
         $('.modal-content').css({"height": 0.6 * $(window).height()});
-        editor_dependencies.setSize("100%", h);
+        //editor_dependencies.setSize("100%", h);
         if (ckeditor_html != "") ckeditor_html.resize("100%", h);
         if (editor_html != "") editor_html.setSize("100%", h);
-        editor_tracked.setSize("100%", h);
-        editor_js_chunk_1.setSize("100%", h);
-        editor_js_chunk_2.setSize("100%", h);
-        editor_json.setSize("100%", h);
-        editor_css.setSize("100%", h);
+        //editor_tracked.setSize("100%", h);
+        //editor_js_chunk_1.setSize("100%", h);
+        //editor_js_chunk_2.setSize("100%", h);
+        //editor_json.setSize("100%", h);
+        //editor_css.setSize("100%", h);
         $('#chx_fullscreen').css({"color": csxColor[0]});
 
         isFullscreen = false;
@@ -159,20 +173,20 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
             data: JSON.stringify({
                 "commit": commit.toString(),
                 "display_name": $('.chx_display_name').val(),
-                "record_click": $('.chx_record_click').prop('checked') ? 1 : 0,
-                "record_hover": $('.chx_record_hover').prop('checked') ? 1 : 0,
-                "tick_interval": $('.chx_tick_interval').val(),
-                "dev_stuff": $('.chx_dev_stuff_studio').prop('checked') ? 1 : 0,
-                "dependencies": editor_dependencies.getDoc().getValue(),
+                //"record_click": $('.chx_record_click').prop('checked') ? 1 : 0,
+                //"record_hover": $('.chx_record_hover').prop('checked') ? 1 : 0,
+                //"tick_interval": $('.chx_tick_interval').val(),
+                //"dev_stuff": $('.chx_dev_stuff_studio').prop('checked') ? 1 : 0,
+                //"dependencies": editor_dependencies.getDoc().getValue(),
                 "body_html":
                     (ckeditor_html != "") ?
                         ckeditor_html.getData() :
                         editor_html.getDoc().getValue(),
-                "body_tracked": editor_tracked.getDoc().getValue(),
-                "body_js_chunk_1": editor_js_chunk_1.getDoc().getValue(),
-                "body_js_chunk_2": editor_js_chunk_2.getDoc().getValue(),
-                "body_json": editor_json.getDoc().getValue(),
-                "body_css": editor_css.getDoc().getValue()
+                //"body_tracked": editor_tracked.getDoc().getValue(),
+                //"body_js_chunk_1": editor_js_chunk_1.getDoc().getValue(),
+                //"body_js_chunk_2": editor_js_chunk_2.getDoc().getValue(),
+                //"body_json": editor_json.getDoc().getValue(),
+                //"body_css": editor_css.getDoc().getValue()
             }) // add success state that appends preview to the DOM
         });
 
@@ -202,7 +216,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
             type: "POST",
             url: runtime.handleUrl(xblock_element, 'get_generated_dependencies'),
             data: JSON.stringify({
-                "dependencies": editor_dependencies.getDoc().getValue()
+                "dependencies": ""
             }),
             success: function(result) {
                 console.log(result.dependencies);
@@ -217,7 +231,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
             type: "POST",
             url: runtime.handlerUrl(xblock_element, 'get_generated_css'),
             data: JSON.stringify({
-                "css": editor_css.getDoc().getValue(),
+                "css": "",
                 "block": ".chx_preview"
             }),
             success: function(result) {
@@ -240,11 +254,8 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
         script.id = "chx_preview_script";
         script.text =
                 "json_settings = JSON.parse(\'" +
-                editor_json.getDoc().getValue()  +
-                "\');\n" +
-                editor_js_chunk_1.getDoc().getValue() +
-                "function preview_run() {" +
-                editor_js_chunk_2.getDoc().getValue() +
+                "\');\n" +               
+                "function preview_run() {" +               
                 "}";
 
         document.head.appendChild(script);

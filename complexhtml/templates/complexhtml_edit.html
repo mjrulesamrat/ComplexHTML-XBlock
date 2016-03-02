@@ -8,7 +8,7 @@
         <br/>
 
 
-            <p class="chx_desc">Record Mouse Click?</p>
+           <!--  <p class="chx_desc">Record Mouse Click?</p>
             <input type="checkbox" class="chx_record_click" {% if self.record_click %} checked {% endif %}>
             <br/>
 
@@ -23,15 +23,15 @@
             <hr/>
             <p class="chx_desc">Show Development Info in LMS?</p>
             <input type="checkbox" class="chx_dev_stuff_studio" {% if self.dev_stuff %} checked {% endif %}>
-
+	    -->
 
     </div>
 
-    <!-- Dependencies tab -->
+    <!-- Dependencies tab 
     <div class="chx_tab_dependencies">
         <p class="chx_desc">Dependencies</p>
         <textarea wrap="off" class="chx_dependencies" cols="80" rows="20">{{ self.dependencies }}</textarea>
-    </div>
+    </div> -->
 
     <!-- HTML editor tab -->
     <div class="chx_tab_html">
@@ -39,37 +39,37 @@
         <textarea name="chx_body_html" wrap="off" class="chx_body_html" cols="80" rows="20">{{ self.body_html }}</textarea>
     </div>
 
-    <!-- Tracked elements tab -->
+    <!-- Tracked elements tab 
 
     <div class="chx_tab_tracked">
         <p class="chx_desc">Tracked Elements</p>
         <textarea wrap="off" class="chx_body_tracked" cols="80" rows="20">{{ self.body_tracked }}</textarea>
     </div>
-
-    <!-- JavaScript editor (global) tab -->
+	-->
+    <!-- JavaScript editor (global) tab
     <div class="chx_tab_js_chunk_1">
         <p class="chx_desc">JavaScript Code Running before Slide Load</p>
         <textarea wrap="off" class="chx_body_js_chunk_1" cols="80" rows="20">{{ self.body_js_chunk_1 }}</textarea>
-    </div>
+    </div> -->
 
-     <!--JavaScript editor (on-load) tab -->
+     <!--JavaScript editor (on-load) tab
     <div class="chx_tab_js_chunk_2">
         <p class="chx_desc">JavaScript Code Running on Slide Load</p>
         <textarea wrap="off" class="chx_body_js_chunk_2" cols="80" rows="20">{{ self.body_js_chunk_2 }}</textarea>
-    </div>
+    </div> -->
 
-     <!--JSON settings tab -->
+     <!--JSON settings tab
     <div class="chx_tab_json">
         <p class="chx_desc">JSON Settings</p>
         <textarea wrap="off" class="chx_body_json" cols="80" rows="20">{{ self.body_json }}</textarea>
-    </div>
+    </div> -->
 
 
-    <!-- CSS editor -->
+    <!-- CSS editor
     <div class="chx_tab_css">
         <p class="chx_desc">CSS</p>
         <textarea wrap="off" class="chx_body_css" cols="80" rows="20">{{ self.body_css }}</textarea>
-    </div>
+    </div> -->
 
     <!-- Preview tab -->
     <div class="chx_tab_preview" hidden>

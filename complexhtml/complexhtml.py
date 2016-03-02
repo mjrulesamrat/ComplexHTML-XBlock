@@ -20,26 +20,26 @@ class ComplexHTMLXBlock(XBlock):
         default="ComplexHTML XBlock"
     )
 
-    record_click = Boolean(
-        help="Record student click?",
-        default=True, scope=Scope.content
-    )
+    #record_click = Boolean(
+       # help="Record student click?",
+       # default=True, scope=Scope.content
+    #)
 
-    record_hover = Boolean(
-        help="Record student hovers? (Note that this will flood the database; use with caution)",
-        default=False, scope=Scope.content
-    )
+    #record_hover = Boolean(
+        #help="Record student hovers? (Note that this will flood the database; use with caution)",
+        #default=False, scope=Scope.content
+    #)
 
-    tick_interval = Integer(
-        default=60000,
-        help="The time (in ms) between pings sent to the server (tied to sessions above)",
-        scope=Scope.content
-    )
+    #tick_interval = Integer(
+       # default=60000,
+       # help="The time (in ms) between pings sent to the server (tied to sessions above)",
+       # scope=Scope.content
+    #)
 
-    dev_stuff = Boolean(
-        help="Show chx_dev_stuff div in LMS?",
-        default=False, scope=Scope.content
-    )
+    #dev_stuff = Boolean(
+       # help="Show chx_dev_stuff div in LMS?",
+       # default=False, scope=Scope.content
+    # )
 
     dependencies = String(
         help="List of JS and CSS dependencies to be used in this XBlock",
@@ -66,11 +66,11 @@ class ComplexHTMLXBlock(XBlock):
         default="console.log(\"Onload event!\");", scope=Scope.content
     )
 
-    body_json = String(
-        help="JSON container that can be used by the JavaScript code above",
-        default="{\"sample\": { \"subsample\": \"true\" }}",
-        scope=Scope.content
-    )
+    #body_json = String(
+     #   help="JSON container that can be used by the JavaScript code above",
+      #  default="{\"sample\": { \"subsample\": \"true\" }}",
+      #  scope=Scope.content
+    #)
 
     body_json_timestamp = String(
         help="Timestamp from the last update made to body_json",
@@ -137,9 +137,9 @@ class ComplexHTMLXBlock(XBlock):
     def get_body_js(self, data, suffix=''):
         return {"body_js": ("Chunk 1: \n" + self.body_js_chunk_1 + "\nChunk 2:\n" + self.body_js_chunk_2)}
 
-    @XBlock.json_handler
-    def get_body_json(self, data, suffix=''):
-        return {"body_json": self.body_json}
+    #@XBlock.json_handler
+    #def get_body_json(self, data, suffix=''):
+        #return {"body_json": self.body_json}
 
     @XBlock.json_handler
     def get_settings_student(self, data, suffix=''):
@@ -436,7 +436,7 @@ class ComplexHTMLXBlock(XBlock):
         # copy over body_json to settings_student if the latter is blank
         if self.settings_student == "":
             self.settings_student_timestamp = self.body_json_timestamp
-            self.settings_student = self.body_json
+            #self.settings_student = self.body_json
 
         # settings_student isn't blank
         else:
@@ -445,7 +445,7 @@ class ComplexHTMLXBlock(XBlock):
             if self.settings_student_timestamp != self.body_json_timestamp:
 
                 # settings_student is outdated in this case, it must be updated
-                self.settings_student = self.update_student_settings_backend(self.settings_student, self.body_json)
+                self.settings_student = self.update_student_settings_backend(self.settings_student)
                 self.settings_student_timestamp = self.body_json_timestamp
 
             # else all is in order, keep going
@@ -460,10 +460,10 @@ class ComplexHTMLXBlock(XBlock):
 
         record = []
 
-        if self.record_click:
-            record.append("click")
-        if self.record_hover:
-            record.append("hover")
+        #if self.record_click:
+           # record.append("click")
+        #if self.record_hover:
+           # record.append("hover")
 
         fragment.add_javascript(unicode(
             self.generate_js(
@@ -494,8 +494,8 @@ class ComplexHTMLXBlock(XBlock):
         except urllib2.URLError, e:
             content["CKEDITOR_URL"] = ""
 
-        if self.tick_interval < 1000:
-            self.tick_interval = 86400000  # 24 hrs
+        #if self.tick_interval < 1000:
+           # self.tick_interval = 86400000  # 24 hrs
 
         
         # Load CodeMirror
@@ -573,21 +573,20 @@ class ComplexHTMLXBlock(XBlock):
 
             # NOTE: No validation going on here; be careful with your code
             self.display_name = data["display_name"]
-            self.record_click = data["record_click"] == 1
-            self.record_hover = data["record_hover"] == 1
-            self.tick_interval = int(data["tick_interval"])
-            self.dev_stuff = data["dev_stuff"] == 1
-            self.dependencies = data["dependencies"]
+           # self.record_click = data["record_click"] == 1
+           # self.record_hover = data["record_hover"] == 1
+           # self.tick_interval = int(data["tick_interval"])
+           # self.dev_stuff = data["dev_stuff"] == 1
+            self.dependencies = ""
             self.body_html = data["body_html"]
-            self.body_tracked = data["body_tracked"]
-            self.body_json = data["body_json"]
+            self.body_tracked = ""
             self.body_json_timestamp = str(datetime.datetime.now())
-            self.body_js_chunk_1 = data["body_js_chunk_1"]
-            self.body_js_chunk_2 = data["body_js_chunk_2"]
-            self.body_css = data["body_css"]
+            self.body_js_chunk_1 = ""
+            self.body_js_chunk_2 =""
+            self.body_css = ""
 
-            if self.tick_interval < 1000:
-                self.tick_interval = 86400000  # 24 hrs
+            #if self.tick_interval < 1000:
+            #    self.tick_interval = 86400000  # 24 hrs
 
             result["submitted"] = "true"
             result["saved"] = "true"
