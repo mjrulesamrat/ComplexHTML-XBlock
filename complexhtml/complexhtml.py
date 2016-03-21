@@ -14,10 +14,10 @@ from xblock.fragment import Fragment
 class ComplexHTMLXBlock(XBlock):
 
     display_name = String(
-        display_name="ComplexHTML XBlock",
+        display_name="LYNX Memorize Box",
         help="This name appears in the horizontal navigation at the top of the page",
         scope=Scope.settings,
-        default="ComplexHTML XBlock"
+        default="LYNX Memorize Box"
     )
 
     #record_click = Boolean(
