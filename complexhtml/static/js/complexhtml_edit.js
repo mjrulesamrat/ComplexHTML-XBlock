@@ -63,6 +63,7 @@ function ComplexHTMLXBlockStudio(runtime, xblock_element) {
             ckeditor_html.config.format_tags = "p;h1;h2;h3;h4;h5;h6;pre;address;div";
             ckeditor_html.config.baseHref = "http://148.251.101.130:8001/";
 	    ckeditor_html.config.resize_enabled = true;
+	    ckeditor_html.config.image_previewText = 'Vorschau Text'
         });
     }
     else{
