@@ -14,10 +14,10 @@ from xblock.fragment import Fragment
 class ComplexHTMLXBlock(XBlock):
 
     display_name = String(
-        display_name="ComplexHTML XBlock",
+        display_name="LYNX Memorize Box",
         help="This name appears in the horizontal navigation at the top of the page",
         scope=Scope.settings,
-        default="ComplexHTML XBlock"
+        default="LYNX Memorize Box"
     )
 
     #record_click = Boolean(
@@ -280,7 +280,7 @@ class ComplexHTMLXBlock(XBlock):
     def generate_html(html):
 
         result = "<div class=\"complexhtml_xblock\">"
-        result += "<div class='complexhtml_left'><i class='fa fa-lightbulb-o'></i>"
+        result += "<div class='complexhtml_left'><i class='material-icons'>wb_incandescent</i>"
         result += "</div>"
         result += "<div class='complexhtml_right'><div>"
         # Assume valid HTML code
